@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isFinishOnBoarding: Bool = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            if isFinishOnBoarding {
+                MainView()
+            } else {
+                SplashView(isFinishOnBoarding: $isFinishOnBoarding)
+            }
+        }
+        .transition(.move(edge: .bottom))
+       
     }
 }
 
